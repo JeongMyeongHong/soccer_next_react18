@@ -2,7 +2,7 @@ import React,{useState, useEffect} from 'react'
 import Link from "next/link";
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
-import tableStyles from "../common/styles/table.module.css"
+import tableStyles from "./styles/table.module.css"
 import MenuItem from '@mui/material/MenuItem';
 
 export default function Nav(){

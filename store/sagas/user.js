@@ -15,6 +15,27 @@ function* addUser(action){
         })
     }
 }
+
 export function* watchAddUser(){
-    yield takeLatest(UserType.USER_ADD_REQUEST, addUser)
+    yield takeLatest(UserType.USER_ADD_REQUESTED, addUser)
+}
+
+function* login(action){
+    try{
+        alert(`3. saga call`)
+        const res = yield call(loginAPI, action.data)
+        yield put({
+            type: UserType.LOGIN_SUCCESSED,
+            payload: res.data
+        })
+    }catch(err){
+        yield put({
+            type: UserType.LOGIN_FAILED,
+            error: err.response.data
+        })
+    }
+}
+export function* watchLogin(){
+    alert(`3. saga watch`)
+    yield takeLatest(UserType.LOGIN_REQUESTED, login)
 }

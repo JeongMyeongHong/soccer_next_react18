@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import { useDispatch } from 'react-redux';
 import { userActions } from '../../redux/reducers/userReducer.ts';
-import tableStyles from '../../components/styles/table.module.css'
+import tableStyles from '@/styles/Table.module.css'
 
 export default function  Login(){
     const [login, setLogin] =useState({

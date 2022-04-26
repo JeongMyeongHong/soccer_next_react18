@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import tableStyles from '../common/styles/table.module.css'
+import tableStyles from '@/styles/Table.module.css'
 export default function Calc() {
     const [inputs, setInputs] = useState({opcode: "+"})
     const [result, setResult] = useState(``)

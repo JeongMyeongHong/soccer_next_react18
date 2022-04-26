@@ -1,2 +1,4 @@
-export {default as Layout} from './Layout'
-export {default as Nav} from './Nav'
+export * from "./Layout"
+export * from "./Header"
+export * from "./Footer"
+export * from "./Nav"

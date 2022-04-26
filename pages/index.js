@@ -1,6 +1,6 @@
 import axios from "axios"
 import React, {useEffect} from 'react'
-import tableStyles from '../components/styles/table.module.css'
+import tableStyles from '@/styles/table.module.css'
 
 export default function Home() {
     useEffect(() => {

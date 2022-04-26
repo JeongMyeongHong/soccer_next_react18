@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import tableStyles from '../common/styles/table.module.css'
+import tableStyles from '@/styles/Table.module.css'
 export default function Counter() {
   const [count, setCount] = useState(0)
   return (<table className={tableStyles.table}>

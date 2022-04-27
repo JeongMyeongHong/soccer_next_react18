@@ -15,6 +15,8 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Head from 'next/head';
+import { userActions } from '@/redux/reducers/userReducer.ts';
+
 const theme = createTheme();
 export default function Join(){
     const [user, setUser] =useState({
@@ -51,9 +53,9 @@ export default function Join(){
             e => {
                 e.preventDefault()
                 dispatch(userActions.joinRequest(user))
-                setUser({
+                {/*setUser({
                     userid:'', password:'', email:'', name:'', phone:'', birth:'', address:''
-                })
+                })*/}
             }
         } sx={{ mt: 3 }}>
             <Grid container spacing={2}>

@@ -24,7 +24,6 @@ export const joinApi = async (payload : {
     address: string
 }) => {
     try {
-        
         const response: AxiosResponse<unknown, UserType[]> = await axios.post(
             `${SERVER}/user/join`,
             payload,

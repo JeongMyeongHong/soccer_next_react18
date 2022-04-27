@@ -23,7 +23,6 @@ const HomeIcon = createSvgIcon(
   'Home',
 );
 
-const preSettings = {subTitles: ['회원가입', '로그인'], urls: ["/user/join","/user/login"]};
 const postSettings = {subTitles: ["프로필", "정보수정", "로그아웃" , "회원탈퇴"], urls: ["/user/profile", "/user/modifyUser", "/user/logout", "/user/delUser"]};
 const basicSettings = {subTitles: ['카운터', '계산기', 'BMI', '게시판'], urls: ["/basic/counter","/basic/calc","/basic/bmi", '/board/list']};
 export function Nav(){
@@ -53,7 +52,7 @@ export function Nav(){
   useEffect(() => {
     const loginUser = localStorage.getItem("loginUser")
     if (loginUser === null) {
-      setUserUrls({subTitles: ['회원가입', '로그인'], urls: ["/user/join","/user/login"]})
+      setUserUrls({subTitles: ['회원가입', '로그인'], urls: ["/user/userJoin","/user/userLogin"]})
       setImageUrl("https://as2.ftcdn.net/v2/jpg/01/85/61/65/1000_F_185616556_uCc1J5d5GNfRH6ErgP1G8x8ORLeG25en.jpg")
     } else {
       setUserUrls({subTitles: ["프로필", "정보수정", "로그아웃" , "회원탈퇴"], urls: ["/user/profile", "/user/modifyUser", "/user/logout", "/user/delUser"]})

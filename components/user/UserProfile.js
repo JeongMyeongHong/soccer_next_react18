@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import tableStyles from '@/styles/Table.module.css'
 
-export default function Profile() {
+export default function UserProfile( { onSubmit, onChange, form } ) {
     const [profile, setProfile] = useState({})
     useEffect(() => {
         const loginUser = localStorage.getItem("loginUser")

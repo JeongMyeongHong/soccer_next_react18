@@ -1,8 +1,16 @@
 import { Header, Layout, Nav } from "../components"
 
 import { wrapper } from '../redux/store.ts'
-import Head from 'next/head'
+import { useEffect, useState } from "react"
 const App = ({ Component, pageProps}) => {
+  const [showChild, setShowChild] = useState(false)
+  useEffect( () => {
+    setShowChild(true)
+  }, [])
+  if (!showChild){
+    return null
+  }
+
   return (<>
   <Nav/>
     <Header/>

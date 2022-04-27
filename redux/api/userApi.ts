@@ -3,48 +3,75 @@ import axios, {AxiosResponse} from 'axios'
 const SERVER = 'http://127.0.0.1:5000'
 const headers = {
     "Content-Type": "application/json",
-    Authorization: "JWT fefege...",
+    Authorization: "JWT fefege..."
 }
-
-export interface UserType{
+export interface UserType {
     userid: string;
-    password: string;  
+    password: string;
     email: string;
-    name: string;  
+    name: string;
     phone: string;
     birth: string;
     address: string;
 }
-
-export const postUser = async (payload: 
-    { userid: string; password: string; email: string; name: string; phone: string; birth: string; address: string;})=> {
-        try{
-            const response:  AxiosResponse<unknown, UserType[]> = await axios.post(`${SERVER}/user/join`,payload, { headers })
-            alert(` 진행 5 : 응답 성공 ${JSON.stringify(response.data)}`)
-            return response.data
-        }catch(error){
-
-        }}
-
-export const loginApi = async (payload: 
-    { userid: string; password: string; })=> {
-        try{
-            const response:  AxiosResponse<unknown, UserType[]> = await axios.post(`${SERVER}/user/login`,payload, { headers })
-            alert(` 진행 5 : login 응답 : ${JSON.stringify(response.data)}`)
-            localStorage.setItem("loginUser", JSON.stringify(response.data))
-            return response.data
-        }catch(error){
-
-        }}
-
-// export const getUser = async (payload: 
-//     { userid: string; password: string; email: string; name: string; phone: string; birth: string; address: string;})=> {
-//         try{
-//             const response:  AxiosResponse<unknown, UserType[]> = await axios.get(`${SERVER}/api/user/list`)
-//             .then(res=>{ setData(res.data.users) }).catch(err=>{})
-//             alert(` 진행 ? : 데이터 가져오기 성공 ${JSON.stringify(response.data)}`)
-//             return response.data
-//         }catch(error){
-
-//         }}
-                    
+export const joinApi = async (payload : {
+    userid: string,
+    password: string,
+    email: string,
+    name: string,
+    phone: string,
+    birth: string,
+    address: string
+}) => {
+    try {
+        
+        const response: AxiosResponse<unknown, UserType[]> = await axios.post(
+            `${SERVER}/user/join`,
+            payload,
+            {headers}
+        )
+        
+        return response.data
+    } catch (err) {
+        return err;
+    }
+}
+export const loginApi = async (payload : {
+    userid: string,
+    password: string
+}) => {
+    try {
+        alert(' 진행 4 : API 진입 ## ')
+        const response: AxiosResponse<unknown, UserType[]> = await axios.post(
+            `${SERVER}/user/login`,
+            payload,
+            {headers}
+        )
+        const loginUser = JSON.stringify(response.data)
+        alert('진행 6 : 응답성공 ' + JSON.stringify(loginUser))
+        localStorage.setItem("loginUser", loginUser)
+        return response.data
+    } catch (err) {
+        return err;
+    }
+}
+export const logoutApi = async () => {
+    try{
+        const response: AxiosResponse<unknown, UserType[]> = await axios.get(
+            `${SERVER}/user/logout`,
+            {headers}
+        )
+    }catch(err){
+        return err;
+    }
+}
+export const delUserApi = async () => {
+    try{
+        const response: AxiosResponse<unknown, UserType[]> = await axios.delete(
+            `${SERVER}/user/delUser`,
+            {headers}
+        )
+    }catch(err){
+        return err;
+    }
+}

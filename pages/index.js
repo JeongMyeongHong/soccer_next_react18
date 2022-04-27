@@ -1,10 +1,10 @@
-import axios from "axios"
-import React, {useEffect} from 'react'
-import tableStyles from '@/styles/table.module.css'
-
+import React, {useEffect} from 'react';
+import tableStyles from '../styles/Table.module.css'
+import axios from "axios";
 export default function Home() {
     useEffect(() => {
         const loginUser = localStorage.getItem("loginUser")
+        const user = JSON.parse(loginUser)
         if (loginUser === null) {
             axios
                 .get("http://localhost:5000/api/now")
@@ -12,16 +12,13 @@ export default function Home() {
                     var data = res.data;
                     document
                         .getElementById("timeZone")
-                        .innerHTML = '<h1>현재시간: ' + data.now + '</h1>'
-                })
+                        .innerHTML = '<h1>현재시간: ' + data.now + '<h1>'
+                });
         } else {
-            const currentUser = JSON.parse(loginUser)
-            document
-                .getElementById("timeZone")
-                .innerHTML = `<h1> 환영합니다 : ${currentUser.name}</h1>`
+            console.log(JSON.stringify(user))
+            document.getElementById("timeZone").innerHTML = '<h1>환영합니다: ' + user.name + '<h1>'
         }
-    }, [])
-
+    }, []);
     return (
         <table className={tableStyles.table}>
             <thead>
@@ -32,9 +29,9 @@ export default function Home() {
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <tr >
                     <td>
-                        <div id="timeZone"></div>
+                        <div id="timeZone">현재시간</div>
                     </td>
                 </tr>
             </tbody>
